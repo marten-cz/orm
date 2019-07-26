@@ -94,6 +94,7 @@ orm:
         entityListenerResolver: NULL
         repositoryFactory: NULL
         defaultQueryHints: []
+        filters: []
 ```
 
 At this time we support only 1 connection, the **default** connection. If you need more connections (more databases?), please open an issue or send a PR. Thanks. 

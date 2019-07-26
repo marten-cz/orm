@@ -49,6 +49,7 @@ final class OrmExtension extends AbstractExtension
 				'entityListenerResolver' => Expect::string(),
 				'repositoryFactory' => Expect::string(),
 				'defaultQueryHints' => Expect::array(),
+				'filters' => Expect::array(),
 			]),
 		]);
 	}
@@ -135,6 +136,12 @@ final class OrmExtension extends AbstractExtension
 
 		if ($config->defaultQueryHints !== []) {
 			$configuration->addSetup('setDefaultQueryHints', [$config->defaultQueryHints]);
+		}
+
+		if ($config->filters !== []) {
+			foreach ($config->filters as $filterName => $filterClass) {
+				$configuration->addSetup('addFilter', [$filterName, $filterClass]);
+			}
 		}
 	}
 
